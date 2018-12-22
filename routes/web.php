@@ -5,6 +5,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 	
 // 中间件测试
+// 地址带后缀
 Route::get('/checktoken','checktokenController@index')->name('checktoken');
 
 Route::get('/checkrole','checkroleController@index')->name('checkrole');
@@ -16,14 +17,14 @@ Route::get('/', function () {
 
 // 资源控制器
 // 表单提交
-Route::resource('post','PostController');
-
+Route::resource('/form','Form\IndexController');
+// 网上demo
 Route::resource('re','ReController');
 
 //注册
-Route::group(['namespace' => 'Register'], function () {
-    Route::resource('/register','IndexController');
-});
+// Route::group(['namespace' => 'Register'], function () {
+//     Route::resource('/register','IndexController');
+// });
 
 Route::resource('/register','Register\IndexController');
 
@@ -34,5 +35,6 @@ Route::get('admin/register', 'Admin\RegisterController@showRegistrationForm')->n
 Route::post('admin/logout', 'Admin\LoginController@logout')->name('admin.logout');
 Route::get('admin', 'AdminController@index')->name('admin.home');
 // ---------登录---------
+
 
 
